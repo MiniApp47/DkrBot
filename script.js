@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
             image: 'CategCaliUs.png', // Image de la catégorie
             products: [
                 {
-                    id: 'CALI',
+                    id: 'ViceCity',
                     name: '🟢 Vice City 🟣',
                     farm: '',
                     type: 'Beuh',
@@ -39,8 +39,42 @@ document.addEventListener('DOMContentLoaded', function() {
                         { weight: '50g', price: 300.00 },
                         { weight: '100g', price: 500.00 },
                     ]
+                },
+                {
+                    id: 'PurplePunch',
+                    name: '💜 Purple Punch 🥊',
+                    farm: '',
+                    type: 'Beuh',
+                    category: 'Cali US', 
+                    quality: 'Premium',
+                    description: 'CALI US 🇺🇸 <br> Forte odeur , un goût magnifique en bouche  <br> 10/10 👌',
+                    image: 'Purple.png',
+                    video: 'Purple.MP4',
+                    tarifs: [
+                        { weight: '3,5g', price: 40.00 },
+                        { weight: '7g', price: 70.00 },
+                        { weight: '25g', price: 170.00 },
+                        { weight: '50g', price: 300.00 },
+                        { weight: '100g', price: 500.00 },
+                    ]
+                },
+                {
+                    id: 'TropicalRuntz',
+                    name: '🟢🟣 Tropical Runtz 🏆',
+                    farm: '',
+                    type: 'Beuh',
+                    category: 'Cali US', 
+                    quality: 'CoffeShop',
+                    description: 'CALI US 🇺🇸 <br> Forte odeur , un goût magnifique en bouche  <br> 10/10 👌',
+                    image: 'TropicalRuntzProduct.png',
+                    video: 'jsp.MP4',
+                    tarifs: [
+                        { weight: '10g', price: 90.00 },
+                        { weight: '25g', price: 200.00 },
+                        { weight: '50g', price: 350.00 },
+                        { weight: '100g', price: 600.00 },
+                    ]
                 }
-                // Ajoute d'autres produits "Cali US" ici
             ]
         },
         {
@@ -50,12 +84,12 @@ document.addEventListener('DOMContentLoaded', function() {
             products: [
                 {
                     id: 'FiltrerX3',
-                    name: 'FILTRER X3 🍫',
+                    name: 'GMO 🍇',
                     farm: '',
                     type: 'Hash',
                     category: 'Filtrer', 
                     quality: 'Standard',
-                    description: 'Gmo 🍇 120u <br> 10/10 👌',
+                    description: '120u <br> 10/10 👌',
                     image: 'X3.png',
                     video: 'X3.mp4',
                     tarifs: [
@@ -65,8 +99,24 @@ document.addEventListener('DOMContentLoaded', function() {
                         { weight: '50g', price: 240.00 },
                         { weight: '10Og', price: 450.00 },
                     ]
+                },
+                {
+                    id: 'NicoleKush',
+                    name: 'Nicole Kush 🍀',
+                    farm: '',
+                    type: 'Hash',
+                    category: 'Filtrer', 
+                    quality: 'Standard',
+                    description: 'Description',
+                    image: 'Nicole.png',
+                    video: 'Nicole.MP4',
+                    tarifs: [
+                        { weight: '10g', price: 80.00 },
+                        { weight: '25g', price: 160.00 },
+                        { weight: '50g', price: 250.00 },
+                        { weight: '10Og', price: 470.00 },
+                    ]
                 }
-                // Ajoute d'autres produits "Filtrer" ici
             ]
         },
         {
@@ -90,8 +140,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         { weight: '50g', price: 150.00 },
                         { weight: '100g', price: 290.00 },
                     ]
-                },
-                {
+                }
+              /*   {
                     id: 'TropicalPunch ',
                     name: 'Tropical punch 🏆',
                     farm: '',
@@ -107,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         { weight: '50g', price: 300.00 },
                         { weight: '100g', price: 500.00 },
                     ]
-                }
+                } */
                 // Ajoute d'autres produits "Mousseux" ici
             ]
         }
@@ -346,7 +396,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const qualities = ['all', ...new Set(productsToFilter.map(p => p.quality))];
         const farms = ['all', ...new Set(productsToFilter.map(p => p.farm))];
 
-        qualityFilter.innerHTML = qualities.map(q => `<option value="${q}">${q === 'all' ? 'La selection du chef' : q}</option>`).join('');
+        qualityFilter.innerHTML = qualities.map(q => `<option value="${q}">${q === 'all' ? 'Nos Qualités' : q}</option>`).join('');
         farmFilter.innerHTML = farms.map(farm => `<option value="${farm}">${farm === 'all' ? 'Les farms' : farm}</option>`).join('');
         
         // Réinitialise les valeurs des selects

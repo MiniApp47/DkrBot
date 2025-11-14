@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Mini App</title>
+    <title>DKR-Bot</title>
     <!-- On importe une police qui ressemble à celle de l'exemple -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +23,7 @@
             --green-color: #34c759;
             --red-color: #ff3b30;
         }
+
         body {
             font-family: 'Roboto', sans-serif;
             background-color: var(--background-color);
@@ -36,6 +38,7 @@
             background-attachment: fixed;
             margin-bottom: 8vh;
         }
+
         /* --- Structure générale des pages --- */
         .page {
             display: none;
@@ -43,38 +46,48 @@
             min-height: 100vh;
             box-sizing: border-box;
         }
+
         .page.active {
             display: flex;
         }
+
         .page-header {
             padding: 15px;
             display: flex;
             align-items: center;
             background: linear-gradient(#2c2c2ec4, transparent);
-            height: 5vh;
+            height: 10vh;
             justify-content: center;
-            position: relative; /* Ajout pour positionner les boutons */
+            position: relative;
+            /* Ajout pour positionner les boutons */
         }
+
         .page-header .title {
             font-size: 1.2rem;
             font-weight: 700;
-            width: 100%;
+            width: 60%;
             text-align: center;
-            padding: 0 40px; /* Espace pour les boutons */
+            padding: 2vh;
             box-sizing: border-box;
+            border: 1px solid grey;
+            border-radius: 20vh;
         }
-        .close-button, .back-button {
+
+        .close-button,
+        .back-button {
             background: none;
             border: none;
             color: var(--hint-color);
-            font-size: 1.5rem;
+            font-size: 2.5rem;
             cursor: pointer;
-            display: none; /* Caché par défaut */
-            position: absolute; /* Positionné dans le header */
-            left: 15px;
+            display: none;
+            /* Caché par défaut */
+            position: absolute;
+            /* Positionné dans le header */
+            left: 30px;
             z-index: 10;
         }
-        
+
         /* Affiche le bouton retour sur les pages produits et catégories */
         #page-product .page-header .back-button,
         #page-category-products .page-header .back-button,
@@ -86,6 +99,7 @@
         .page-content {
             flex-grow: 1;
             padding: 15px;
+            margin-top: 5vh;
         }
 
         /* --- Écran de chargement --- */
@@ -93,7 +107,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
@@ -102,10 +116,29 @@
             height: 100%;
             z-index: 100;
         }
-        #page-loader .loader-box { background: var(--secondary-bg-color); padding: 30px; border-radius: 20px; }
-        #page-loader img { width: 80px; height: 80px; border-radius: 15px; margin-bottom: 20px; }
-        #page-loader .app-name { font-size: 1.5rem; font-weight: 700; }
-        #page-loader .loading-text { color: var(--hint-color); margin-top: 10px; }
+
+        #page-loader .loader-box {
+            background: var(--secondary-bg-color);
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        #page-loader img {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        #page-loader .app-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        #page-loader .loading-text {
+            color: var(--hint-color);
+            margin-top: 10px;
+        }
 
         /* --- Page d'accueil --- */
         #page-home .home-header {
@@ -115,17 +148,19 @@
             padding: 10px 15px;
             background: linear-gradient(#040e10, transparent);
             position: relative;
-            height: 14vh;
+            height: 20vh;
         }
+
         .home-logo {
             position: absolute;
             left: 50%;
-            top: 50%;
+            top: 60%;
             transform: translate(-50%, -50%);
-            height: 9vh;
+            height: 12vh;
             border-radius: 20%;
             box-shadow: 0px 0px 10px 2px #192b27;
         }
+
         #page-home .cart-button {
             background: var(--tertiary-bg-color);
             border: none;
@@ -135,22 +170,35 @@
             color: white;
             position: relative;
             cursor: pointer;
-            display: none; /* Caché pour l'instant */
+            display: none;
+            /* Caché pour l'instant */
         }
+
         .cart-button .cart-count {
-            position: absolute; top: -5px; right: -5px; background: #489fc9;
-            color: white; border-radius: 50%; font-size: 0.7rem; width: 18px;
-            height: 18px; display: flex; justify-content: center;
-            align-items: center; font-weight: 700;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #489fc9;
+            color: white;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
         }
 
         /* Style des filtres (maintenant sur la page catégorie) */
         .filters {
-            padding: 0 0 15px 0; /* Modifié: padding en haut supprimé */
+            padding: 0 0 15px 0;
+            /* Modifié: padding en haut supprimé */
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
+
         .filter-input-wrapper,
         .filter-select-wrapper {
             position: relative;
@@ -159,26 +207,48 @@
             background: var(--secondary-bg-color);
             border-radius: 10px;
         }
+
         /* Cache les filtres non utilisés */
-        #search-filter-wrapper, #farm-filter-wrapper {
-             display: none;
+        #search-filter-wrapper,
+        #farm-filter-wrapper {
+            display: none;
         }
 
         .filter-select-wrapper::after {
-            content: '▾'; position: absolute; right: 15px; top: 50%;
-            transform: translateY(-50%); color: var(--hint-color); pointer-events: none;
+            content: '▾';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--hint-color);
+            pointer-events: none;
         }
+
         .filter-input-wrapper input,
         .filter-select-wrapper select {
-            width: 100%; padding: 15px; padding-left: 50px;
-            border: none; background: transparent; color: var(--text-color);
-            font-size: 1rem; appearance: none; -webkit-appearance: none;
+            width: 100%;
+            padding: 15px;
+            padding-left: 50px;
+            border: none;
+            background: transparent;
+            color: var(--text-color);
+            font-size: 1rem;
+            appearance: none;
+            -webkit-appearance: none;
         }
-        .filter-input-wrapper input::placeholder { color: var(--hint-color); opacity: 1; }
+
+        .filter-input-wrapper input::placeholder {
+            color: var(--hint-color);
+            opacity: 1;
+        }
+
         .filter-input-wrapper svg,
         .filter-select-wrapper svg {
-            position: absolute; left: 15px; top: 50%;
-            transform: translateY(-50%); color: var(--hint-color);
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--hint-color);
         }
 
         /* Grille pour les produits */
@@ -186,32 +256,39 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
-            padding-bottom: 80px; /* Espace pour la nav */
+            padding-bottom: 80px;
+            /* Espace pour la nav */
         }
-        
+
         /* Grille pour les catégories sur la page d'accueil */
-        #page-home .category-grid { /* Classe modifiée */
+        #page-home .category-grid {
+            /* Classe modifiée */
             display: grid;
-            grid-template-columns: 1fr; /* 1 colonne pour les catégories */
+            grid-template-columns: 1fr;
+            /* 1 colonne pour les catégories */
             gap: 15px;
             padding: 15px;
             margin-top: 5vh;
         }
-        
+
         /* Style de la carte Catégorie */
         .category-card {
             border-radius: 15px;
             overflow: hidden;
         }
+
         .category-card img {
             width: 100%;
-            height: 150px; /* Hauteur pour l'image de catégorie */
+            height: 150px;
+            /* Hauteur pour l'image de catégorie */
             object-fit: cover;
         }
+
         .category-card .info {
             padding: 15px;
             text-align: center;
         }
+
         .category-card .name {
             font-weight: 700;
             font-size: 1.2rem;
@@ -220,42 +297,78 @@
 
         /* Style de la carte Produit */
         .product-card {
-            background: var(--secondary-bg-color);
+            background: linear-gradient(#3d3424, #142024);
             border-radius: 15px;
             overflow: hidden;
             cursor: pointer;
+            height: 20vh;
+            text-align: center;
         }
+
+        .product-card .farm {
+            display: none;
+        }
+
+        .product-card .name {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 6vh;
+        }
+
         .product-card img {
             width: 100%;
             height: 120px;
             object-fit: cover;
         }
-       /*  .product-card .info { padding: 10px; }
+
+        /*  .product-card .info { padding: 10px; }
         .product-card .name { font-weight: 500; }
         .product-card .farm { color: var(--hint-color); font-size: 0.8rem; } */
-        
+
         .no-results {
             padding: 20px;
             text-align: center;
             color: var(--hint-color);
             grid-column: 1 / -1;
         }
-        
+
         /* Barre de navigation en bas */
         .bottom-nav {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            display: flex; justify-content: space-around;
-            background: #2c2c2ea1; padding: 10px 0; z-index: 50;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            background: #2c2c2ea1;
+            padding: 10px 0;
+            z-index: 50;
         }
+
         .nav-item {
-            display: flex; flex-direction: column; align-items: center;
-            color: var(--hint-color); text-decoration: none; font-size: 0.7rem;
-            background: #8080807d; border-radius: 20px; width: 15vh;
-            color: #3f96c6; padding: 1vh;
-            border: none; /* S'assurer que c'est un bouton propre */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--hint-color);
+            text-decoration: none;
+            font-size: 0.7rem;
+            background: #8080807d;
+            border-radius: 20px;
+            width: 15vh;
+            color: #3f96c6;
+            padding: 1vh;
+            border: none;
+            /* S'assurer que c'est un bouton propre */
         }
-        .nav-item.active { color: #c6a314; }
-        .nav-item svg { margin-bottom: 5px; }
+
+        .nav-item.active {
+            color: #c6a314;
+        }
+
+        .nav-item svg {
+            margin-bottom: 5px;
+        }
 
         /* Page Produit */
         #page-product .product-video {
@@ -263,36 +376,53 @@
             aspect-ratio: 9 / 16;
             background: #000;
         }
+
         #page-product .product-details {
             background: rgba(44, 44, 46, 0.85) !important;
             backdrop-filter: blur(10px) !important;
             -webkit-backdrop-filter: blur(10px) !important;
-            border-radius: 20px !important ;
+            border-radius: 20px !important;
             padding: 20px !important;
             margin-top: 20px !important;
             border: 1px solid rgba(255, 255, 255, 0.1) !important;
         }
-        .product-details .name { font-size: 1.5rem; font-weight: 700; }
-        .product-details .farm { color: var(--hint-color); }
+
+        .product-details .name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .product-details .farm {
+            color: var(--hint-color);
+        }
+
         .product-description {
             color: var(--hint-color);
             font-size: 0.95rem;
             margin-top: 15px;
             margin-bottom: 20px;
             line-height: 1.4;
+            text-align: center;
         }
-        .product-details .tarifs-title { margin-top: 20px; font-weight: 500; }
-        
+
+        .product-details .tarifs-title {
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
         /* Grille pour les tarifs */
         .tarifs-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
         }
+
         .tarifs-grid .tarif-item {
             width: 100%;
             margin-left: 0;
         }
+
         .tarif-item {
             display: flex;
             justify-content: center;
@@ -303,19 +433,24 @@
             border: 1px solid white;
             height: 4vh;
         }
+
         .add-to-cart-btn {
-            background: #489fc9;;
+            background: #489fc9;
+            ;
             border: none;
             border-radius: 8px;
             color: white;
             width: 35px;
             height: 35px;
             cursor: pointer;
-            display: none; /* Caché */
+            display: none;
+            /* Caché */
         }
-        .box-tarif{
+
+        .box-tarif {
             display: flex;
-            font-size: 1.2rem; /* Ajusté la taille */
+            font-size: 1.2rem;
+            /* Ajusté la taille */
             justify-content: space-around;
             width: 100%;
             font-family: fangsong;
@@ -323,94 +458,313 @@
 
         /* Page Panier & Confirmation */
         .cart-item {
-            display: flex; align-items: center; gap: 15px;
-            padding: 15px 0; border-bottom: 1px solid var(--tertiary-bg-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--tertiary-bg-color);
         }
-        .cart-item img { width: 60px; height: 60px; border-radius: 10px; object-fit: cover; }
-        .cart-item .item-details { flex-grow: 1; }
-        .cart-item .name { font-weight: 500; }
-        .cart-item .price { color: var(--accent-color); font-weight: 700; }
-        .quantity-selector { display: flex; align-items: center; background: var(--tertiary-bg-color); border-radius: 8px; }
-        .quantity-selector button { background: none; border: none; color: white; padding: 8px 12px; font-size: 1.2rem; cursor: pointer; }
-        .quantity-selector .quantity { padding: 0 10px; }
-        .cart-summary { background: #489fc9; color: white; padding: 15px; border-radius: 10px; margin-top: 20px; }
+
+        .cart-item img {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .cart-item .item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item .name {
+            font-weight: 500;
+        }
+
+        .cart-item .price {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            background: var(--tertiary-bg-color);
+            border-radius: 8px;
+        }
+
+        .quantity-selector button {
+            background: none;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .quantity-selector .quantity {
+            padding: 0 10px;
+        }
+
+        .cart-summary {
+            background: #489fc9;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
         .cart-total {
-            background: var(--secondary-bg-color); padding: 15px; border-radius: 10px;
-            margin-top: 20px; display: flex; justify-content: space-between; align-items: center;
+            background: var(--secondary-bg-color);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+
         .cart-actions {
-            padding: 15px; display: flex; flex-direction: column;
-            gap: 10px; margin-bottom: 8vh;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 8vh;
         }
+
         .main-action-btn {
-            background: #489fc9; color: white; padding: 15px;
-            border-radius: 10px; border: none; font-size: 1rem;
-            font-weight: 700; cursor: pointer;
+            background: #489fc9;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
         }
+
         .secondary-action-btn {
-            background: var(--secondary-bg-color); color: white; padding: 15px;
-            border-radius: 10px; border: none; font-size: 1rem; cursor: pointer;
+            background: var(--secondary-bg-color);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
         }
 
         /* Notification */
         #notification-toast {
-            visibility: hidden; min-width: 250px; background-color:#489fc9;
-            color: #fff; text-align: center; border-radius: 10px;
-            padding: 16px; position: fixed; z-index: 101; left: 50%;
-            transform: translateX(-50%); bottom: 30px; font-size: 1rem;
-            font-weight: 500; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #489fc9;
+            color: #fff;
+            text-align: center;
+            border-radius: 10px;
+            padding: 16px;
+            position: fixed;
+            z-index: 101;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: visibility 0.5s, opacity 0.5s, transform 0.5s;
         }
-        #notification-toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
-        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
-        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+
+        #notification-toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
 
         /* Page Contact */
-        #page-contact .page-content { display: flex; flex-direction: column; align-items: center; padding-top: 10vh; }
-        #page-contact .contact-logo { width: 100px; height: 100px; border-radius: 25px; margin-bottom: 30px; }
-        #page-contact .contact-card {
-            background: rgba(44, 44, 46, 0.8); backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); border-radius: 20px;
-            width: 100%; max-width: 400px; padding: 20px;
-            box-sizing: border-box; margin-top: 12vh;
+        #page-contact .page-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 10vh;
         }
-        .contact-links-list a {
-            display: flex; align-items: center; padding: 15px;
-            background: var(--tertiary-bg-color); border-radius: 10px;
-            margin-bottom: 10px; text-decoration: none; color: var(--text-color);
-            font-weight: 500; transition: background-color 0.2s ease;
-        }
-        .contact-links-list a:last-child { margin-bottom: 0; }
-        .contact-links-list a:hover { background-color: #4a4a4c; }
-        .contact-links-list a svg { margin-right: 15px; }
-        .contact-link.whatsapp { background-color: #25D366; }
-        .contact-link.instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
-        .contact-link.snapchat { background-color: #FFFC00; color: #000000; }
-        .contact-link.snapchat svg { stroke: #000000; }
-        .contact-link.telegram { background-color: #0088cc; }
-        .contact-link.potato { background-color: #d35400; }
 
+        #page-contact .contact-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 25px;
+            margin-bottom: 30px;
+        }
+
+        #page-contact .contact-card {
+            background: rgba(44, 44, 46, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            box-sizing: border-box;
+            margin-top: 12vh;
+        }
+
+        .contact-links-list a {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: var(--tertiary-bg-color);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .contact-links-list a:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-links-list a:hover {
+            background-color: #4a4a4c;
+        }
+
+        .contact-links-list a svg {
+            margin-right: 15px;
+        }
+
+        .contact-link.whatsapp {
+            background-color: #25D366;
+        }
+
+        .contact-link.instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .contact-link.snapchat {
+            background-color: #FFFC00;
+            color: #000000;
+        }
+
+        .contact-link.snapchat svg {
+            stroke: #000000;
+        }
+
+        .contact-link.telegram {
+            background-color: #0088cc;
+        }
+
+        .contact-link.potato {
+            background-color: #d35400;
+        }
     </style>
 </head>
+
 <body>
-    
+
     <!-- Icônes SVG réutilisables -->
     <svg width="0" height="0" style="position:absolute">
         <defs>
-            <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></symbol>
-            <symbol id="icon-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></symbol>
-            <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></symbol>
-            <symbol id="icon-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></symbol>
-            <symbol id="icon-contact" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></symbol>
-            <symbol id="icon-quality" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></symbol>
-            <symbol id="icon-farm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 9.5L9.5 4.5l-5 5L1 11l4.5 4.5 5-5 4.5-4.5z"></path><path d="M19.5 14.5L14.5 9.5l-5 5L1 21h8l4.5-4.5 5-5 4.5-4.5z"></path></symbol>
-            <symbol id="icon-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></symbol>
-            <symbol id="icon-telegram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 L11 13 L2 9 L22 2 Z M22 2 L15 22 L11 13 L2 9 L22 2 Z"></path></symbol>
-            <symbol id="icon-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></symbol>
-            <symbol id="icon-snapchat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1.5C6.2 1.5 1.5 6.2 1.5 12c0 5.8 4.7 10.5 10.5 10.5S22.5 17.8 22.5 12c0-5.8-4.7-10.5-10.5-10.5zm-2.3 12.9c-.3 0-.6-.1-.8-.4-.5-.5-.5-1.3 0-1.8l3.1-3.1c.5-.5 1.3-.5 1.8 0 .5.5.5 1.3 0 1.8l-3.1 3.1c-.2.3-.5.4-.8.4z"/></symbol>
-            <symbol id="icon-potato" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><circle cx="10" cy="10" r="1.5"/><circle cx="14" cy="14" r="1.5"/><circle cx="14" cy="10" r="1.5"/><circle cx="10" cy="14" r="1.5"/></symbol>
-            <symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></symbol>
-            <symbol id="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.72"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.72-1.72"></path></symbol>
+            <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </symbol>
+            <symbol id="icon-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </symbol>
+            <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </symbol>
+            <symbol id="icon-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </symbol>
+            <symbol id="icon-contact" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+            </symbol>
+            <symbol id="icon-quality" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                </polygon>
+            </symbol>
+            <symbol id="icon-farm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.5 9.5L9.5 4.5l-5 5L1 11l4.5 4.5 5-5 4.5-4.5z"></path>
+                <path d="M19.5 14.5L14.5 9.5l-5 5L1 21h8l4.5-4.5 5-5 4.5-4.5z"></path>
+            </symbol>
+            <symbol id="icon-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </symbol>
+            <symbol id="icon-telegram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 2 L11 13 L2 9 L22 2 Z M22 2 L15 22 L11 13 L2 9 L22 2 Z"></path>
+            </symbol>
+            <symbol id="icon-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                </path>
+            </symbol>
+            <symbol id="icon-snapchat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M12 1.5C6.2 1.5 1.5 6.2 1.5 12c0 5.8 4.7 10.5 10.5 10.5S22.5 17.8 22.5 12c0-5.8-4.7-10.5-10.5-10.5zm-2.3 12.9c-.3 0-.6-.1-.8-.4-.5-.5-.5-1.3 0-1.8l3.1-3.1c.5-.5 1.3-.5 1.8 0 .5.5.5 1.3 0 1.8l-3.1 3.1c-.2.3-.5.4-.8.4z" />
+            </symbol>
+            <symbol id="icon-potato" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                <circle cx="10" cy="10" r="1.5" />
+                <circle cx="14" cy="14" r="1.5" />
+                <circle cx="14" cy="10" r="1.5" />
+                <circle cx="10" cy="14" r="1.5" />
+            </symbol>
+            <symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </symbol>
+            <symbol id="icon-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.72"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.72-1.72"></path>
+            </symbol>
         </defs>
     </svg>
 
@@ -418,8 +772,8 @@
     <div id="page-loader" class="page active">
         <div class="loader-box">
             <img src="logo1.png" alt="Logo">
-            <div class="app-name">PlugsBot</div>
-            <div class="loading-text">Chargement de PlugsBot...</div>
+            <div class="app-name">🏢 Dkr-Idf 🏙</div>
+            <div class="loading-text">Chargement de DkrIdf-Bot...</div>
         </div>
     </div>
 
@@ -428,13 +782,15 @@
         <div class="home-header">
             <img src="logo1.png" alt="Logo" class="home-logo">
             <button class="cart-button" id="home-cart-button">
-                <svg width="20" height="20"><use href="#icon-cart"/></svg>
+                <svg width="20" height="20">
+                    <use href="#icon-cart" />
+                </svg>
                 <span class="cart-count">0</span>
             </button>
         </div>
-        
+
         <!-- Les filtres ont été déplacés vers page-category-products -->
-        
+
         <div id="product-list" class="category-grid">
             <!-- Les CARTES DE CATÉGORIE seront injectées ici -->
         </div>
@@ -446,24 +802,30 @@
             <button class="back-button">‹</button>
             <span class="title" id="category-page-title">Catégorie</span>
         </div>
-        
+
         <div class="page-content">
             <!-- Les filtres sont maintenant ici -->
             <div class="filters">
                 <div id="search-filter-wrapper" class="filter-input-wrapper">
-                    <svg width="20" height="20"><use href="#icon-search"/></svg>
+                    <svg width="20" height="20">
+                        <use href="#icon-search" />
+                    </svg>
                     <input type="text" id="search-filter" placeholder="Rechercher un produit...">
                 </div>
                 <div id="quality-filter-wrapper" class="filter-select-wrapper">
-                    <svg width="20" height="20"><use href="#icon-quality"/></svg>
+                    <svg width="20" height="20">
+                        <use href="#icon-quality" />
+                    </svg>
                     <select id="quality-filter"></select>
                 </div>
                 <div id="farm-filter-wrapper" class="filter-select-wrapper">
-                    <svg width="20" height="20"><use href="#icon-farm"/></svg>
+                    <svg width="20" height="20">
+                        <use href="#icon-farm" />
+                    </svg>
                     <select id="farm-filter"></select>
                 </div>
             </div>
-            
+
             <div id="category-product-list" class="product-grid">
                 <!-- Les PRODUITS de la catégorie seront injectés ici -->
             </div>
@@ -477,7 +839,8 @@
             <span class="title" id="product-page-title"></span>
         </div>
         <div class="page-content">
-            <video class="product-video" poster="https://placehold.co/400x711/000000/ffffff?text=Video" controls></video>
+            <video class="product-video" poster="https://placehold.co/400x711/000000/ffffff?text=Video"
+                controls></video>
             <div id="product-details-content" class="product-details">
                 <!-- Détails du produit injectés ici -->
             </div>
@@ -491,9 +854,9 @@
             <span class="title">Mon Panier</span>
         </div>
         <div class="page-content">
-             <div id="cart-items-container">
+            <div id="cart-items-container">
                 <!-- Items du panier injectés ici -->
-             </div>
+            </div>
         </div>
         <div class="cart-actions">
             <div class="cart-total">
@@ -521,9 +884,9 @@
             </div>
             <h4>Détail des articles</h4>
             <div id="confirmation-items-list">
-                 <!-- Détails de la confirmation injectés ici -->
+                <!-- Détails de la confirmation injectés ici -->
             </div>
-             <div class="cart-total">
+            <div class="cart-total">
                 <span>💰 Total final:</span>
                 <span id="confirmation-final-price">0.00€</span>
             </div>
@@ -550,16 +913,21 @@
     <!-- Barre de navigation -->
     <div class="bottom-nav">
         <button id="nav-menu" data-page="page-home" class="nav-item active">
-            <svg width="24" height="24"><use href="#icon-home"/></svg>
+            <svg width="24" height="24">
+                <use href="#icon-home" />
+            </svg>
         </button>
         <button id="nav-contact" data-page="page-contact" class="nav-item">
-            <svg width="24" height="24"><use href="#icon-link"/></svg>
+            <svg width="24" height="24">
+                <use href="#icon-link" />
+            </svg>
         </button>
     </div>
-    
+
     <!-- Notification -->
     <div id="notification-toast"></div>
 
     <script src="script.js"></script>
 </body>
+
 </html>

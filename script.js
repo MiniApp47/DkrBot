@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 {
                     id: 'TropicalRuntz',
-                    name: '🟢🟣 Tropical Runtz 🏆',
+                    name: 'Tropical Runtz 🏆',
                     farm: '',
                     type: 'Beuh',
                     category: 'Cali US', 

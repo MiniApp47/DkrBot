@@ -71,6 +71,7 @@
             box-sizing: border-box;
             border: 1px solid grey;
             border-radius: 20vh;
+            font-family: 'icomoon';
         }
 
         .close-button,
@@ -84,7 +85,7 @@
             /* Caché par défaut */
             position: absolute;
             /* Positionné dans le header */
-            left: 30px;
+            left: 3vh;
             z-index: 10;
         }
 
@@ -148,13 +149,13 @@
             padding: 10px 15px;
             background: linear-gradient(#040e10, transparent);
             position: relative;
-            height: 20vh;
+            height: 10vh;
         }
 
         .home-logo {
             position: absolute;
             left: 50%;
-            top: 60%;
+            top: 80%;
             transform: translate(-50%, -50%);
             height: 12vh;
             border-radius: 20%;
@@ -267,7 +268,7 @@
             grid-template-columns: 1fr;
             /* 1 colonne pour les catégories */
             gap: 15px;
-            padding: 15px;
+            padding: 3vh;
             margin-top: 5vh;
         }
 
@@ -301,7 +302,7 @@
             border-radius: 15px;
             overflow: hidden;
             cursor: pointer;
-            height: 20vh;
+            height: 28vh;
             text-align: center;
         }
 
@@ -313,7 +314,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 6vh;
+            height: 9vh;
         }
 
         .product-card img {
@@ -372,9 +373,12 @@
 
         /* Page Produit */
         #page-product .product-video {
-            width: 100%;
-            aspect-ratio: 9 / 16;
-            background: #000;
+            width: 85%;
+    border-radius: 20px;
+    aspect-ratio: 9 / 16;
+    background: #000;
+    margin: auto;
+    display: block;
         }
 
         #page-product .product-details {
@@ -427,7 +431,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(#042d47, #031e33);
+            background: linear-gradient(#2d2c22, #7f5b1c91);
             padding: 10px 0;
             border-radius: 20px;
             border: 1px solid white;

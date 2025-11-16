@@ -295,6 +295,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="tarif-item">
                 <div class="box-tarif">
                     <div class="tarif-wieght">${tarif.weight}</div>
+                    <div> - </div>
                     <div class="tarif-price">${tarif.price.toFixed(2)}€</div>
                 </div>
                 <button class="add-to-cart-btn" data-product-id="${product.id}" data-weight="${tarif.weight}" data-price="${tarif.price}">
@@ -330,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <img src="${item.image}" alt="${item.name}">
                 <div class="item-details">
                     <div class="name">${item.name}</div>
-                    <div>${item.weight} - ${item.unitPrice.toFixed(2)}€</div>
+                    <div class="number">${item.weight} ${item.unitPrice.toFixed(2)}€</div>
                     <div class="price">${item.totalPrice.toFixed(2)}€</div>
                 </div>
                 <div class="quantity-selector">

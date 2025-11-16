@@ -590,7 +590,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Clic sur "Confirmer la commande" (depuis page-confirmation)
         if (target.closest('#confirm-order-button')) {
-            const targetUsername = 'plugsBotOfficiel';
+            const targetUsername = 'NINTCH75';
             let message = formatOrderMessage();
             message = message.replace(/\*/g, '');
             const encodedMessage = encodeURIComponent(message);

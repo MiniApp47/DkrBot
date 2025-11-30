@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     type: 'Hash',
                     category: 'Filtrer', 
                     quality: 'Standard',
-                    description: 'Description',
+                    description: 'Gout de qualité 10/10 🧙🏻‍♂️',
                     image: 'Nicole.png',
                     video: 'Nicole.MP4',
                     tarifs: [
@@ -115,6 +115,23 @@ document.addEventListener('DOMContentLoaded', function() {
                         { weight: '25g', price: 160.00 },
                         { weight: '50g', price: 250.00 },
                         { weight: '10Og', price: 470.00 },
+                    ]
+                },
+                {
+                    id: 'MIMOSA',
+                    name: 'MIMOSA 🕯',
+                    farm: '',
+                    type: 'Hash',
+                    category: 'Filtrer', 
+                    quality: 'Standard',
+                    description: '🇲🇦 Olive tout droit venu des meilleurs farm marocaine 🧁',
+                    image: 'ProductFrozen.png',
+                    video: 'ProductFrozen.mov',
+                    tarifs: [
+                        { weight: '1 olive', price: 110.00 },
+                        { weight: '2 olive', price: 200.00 },
+                        { weight: '5 olive', price: 350.00 },
+                        { weight: '10 olive', price: 600.00 },
                     ]
                 }
             ]
@@ -125,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
             image: 'CategMouss.png', // Image de la catégorie
             products: [
                 {
-                    id: 'MOUSSEUX',
+                    id: 'OnePiece',
                     name: 'One Peace 🏴‍☠️⚓️ ',
                     farm: '',
                     type: 'Hash',
@@ -134,6 +151,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     description: 'MOUSSEUX 🟡🇲🇦 🇺🇸 <br> 10/10 👌',
                     image: 'OnePeace.png',
                     video: 'OnePeace.mp4',
+                    tarifs: [
+                        { weight: '12,5g', price: 50.00 },
+                        { weight: '25g', price: 90.00 },
+                        { weight: '50g', price: 150.00 },
+                        { weight: '100g', price: 290.00 },
+                    ]
+                },
+                {
+                    id: 'Gutti',
+                    name: 'Gutti 🍓',
+                    farm: '',
+                    type: 'Hash',
+                    category: 'Mousseux',
+                    quality: 'Premium',
+                    description: 'Mousseux avec un gout fruité hors du commun 🥭🍒 <br> 10/10 👌',
+                    image: 'ProductGutti.png',
+                    video: 'ProductGutti.mp4',
                     tarifs: [
                         { weight: '12,5g', price: 50.00 },
                         { weight: '25g', price: 90.00 },
